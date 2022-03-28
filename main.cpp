@@ -56,14 +56,11 @@ class Student {
             std::string studentName;
             std::getline(std::cin,studentName);
             s.setStudentName(studentName);
-            std::cin.ignore();
+            std::cin.ignore(1000, '\n');
             int idNum;
             std::cout << "Enter Students ID:\n ";
             std::cin >>idNum;
             s.setStudentID(idNum);
-            int studentID;
-            std::cin >> studentID;
-            s.setStudentID(studentID);
             return is;
         }
 };
