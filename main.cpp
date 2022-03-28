@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author Conner Lusk
+ * @author Conner Lusk & Haleluya Asfaw
  * @brief This is practice activity 8
  * @version 0.1
  * @date 2022-03-27
@@ -52,11 +52,15 @@ class Student {
         }
         // overrides the >> operator
         friend std::istream& operator>> (std::istream& is, Student& s) {
-            std::cout << "Enter Students Name: ";
+            std::cout << "Enter Students Name:\n ";
             std::string studentName;
             std::getline(std::cin,studentName);
             s.setStudentName(studentName);
-             std::cout << "Enter Students ID: ";
+            std::cin.ignore();
+            int idNum;
+            std::cout << "Enter Students ID:\n ";
+            std::cin >>idNum;
+            s.setStudentID(idNum);
             int studentID;
             std::cin >> studentID;
             s.setStudentID(studentID);
@@ -144,25 +148,28 @@ class Course {
         }
         // overrides the >> operator
         friend std::istream& operator>> (std::istream& is, Course& c) {
-            std::cout << "Enter Course Name: ";
+            std::cout << "Enter Course Name:\n ";
             std::string courseName;
             std::getline(std::cin,courseName);
             c.setCourseName(courseName);
             int sectionNumber;
-            std::cout << "Enter Section ID: ";
+            std::cout << "Enter Section ID:\n ";
             std::cin >> sectionNumber;
             c.setSectionNumber(sectionNumber);
             std::string profName;
-            std::cout << "Enter Professors Name: ";
+            std::cout << "Enter Professors Name:\n ";
             std::getline(std::cin,profName);
             c.setInstructorName(profName);
             std::string next = "y";
+            std::cin.ignore();
             while (next == "y") {
                 Student newStudent;
                 std::cin >> newStudent;
                 c.addStudent(newStudent);
-                std::cout << "Would you like to continue(y for yes, anything else for no)?";
-                std::cin >> next;
+                std::cin.ignore();
+                std::cout << "Would you like to continue(y for yes, anything else for no)?\n";
+                std::getline(std::cin,next);
+                std::cin.ignore();
             }
             return is;
         }
